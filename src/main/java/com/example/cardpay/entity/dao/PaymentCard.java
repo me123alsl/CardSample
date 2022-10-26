@@ -4,12 +4,12 @@ package com.example.cardpay.entity.dao;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder(builderMethodName = "PaymentCardBuilder")
 @Table(name = "payment_card")
 public class PaymentCard {
     @Id
@@ -23,8 +23,8 @@ public class PaymentCard {
     @Column(name = "user" , nullable = false)
     private String user;
     @Column(name = "payment_date", nullable = false)
-    private String paymentDate;
-    @Column(name = "card_company", nullable = false)
+    private LocalDateTime paymentDate;
+    @Column(name = "card_number", nullable = false)
     private String cardNumber;
     @Column(name = "card_company", nullable = false)
     private String cardCompany;
@@ -33,14 +33,14 @@ public class PaymentCard {
     @Column(name = "payment_amount", nullable = false)
     private int paymentAmount;
 
-    public static PaymentCardBuilder builder(PaymentCard PaymentCard) {
-        return PaymentCardBuilder()
-                .user(PaymentCard.getUser())
-                .paymentDate(PaymentCard.getPaymentDate())
-                .cardNumber(PaymentCard.getCardNumber())
-                .cardCompany(PaymentCard.getCardCompany())
-                .storeName(PaymentCard.getStoreName())
-                .paymentAmount(PaymentCard.getPaymentAmount());
+    @Builder
+    public PaymentCard(String user, LocalDateTime paymentDate, String cardNumber, String cardCompany, String storeName, int paymentAmount) {
+        this.user = user;
+        this.cardCompany = cardCompany;
+        this.cardNumber = cardNumber;
+        this.paymentAmount = paymentAmount;
+        this.paymentDate = paymentDate;
+        this.storeName = storeName;
     }
 }
 

@@ -1,10 +1,10 @@
 package com.example.cardpay.service;
 
-import com.example.cardpay.entity.dao.PaymentCard;
-import com.example.cardpay.entity.ResponseDTO;
+import com.example.cardpay.entity.CommonResponse;
+import com.example.cardpay.entity.dto.CreatePaymentRequest;
 import com.example.cardpay.entity.dto.SearchPaymentRequest;
 
 public interface PaymentCardService {
-    void insertCardPayment(PaymentCard paymentCard);
-    ResponseDTO findBySearchOption(SearchPaymentRequest searchOption);
+    void insertCardPayment(CreatePaymentRequest createPaymentRequest);
+    CommonResponse findBySearchOption(SearchPaymentRequest searchOption);
 }

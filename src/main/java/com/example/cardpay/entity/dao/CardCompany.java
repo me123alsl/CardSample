@@ -18,11 +18,11 @@ import javax.persistence.Table;
 @Table(name = "card_company")
 public class CardCompany {
     @Id
-    @Column(name = "card_company", nullable = false, unique = true)
-    private String cardCompany;
+    @Column(name = "card_company_name", insertable=false, updatable=false)
+    private String cardCompanyName;
 
     public static CardCompanyBuilder builder(CardCompany cardCompany) {
         return CardCompanyBuilder()
-                .cardCompany(cardCompany.getCardCompany());
+                .cardCompanyName(cardCompany.getCardCompanyName());
     }
 }

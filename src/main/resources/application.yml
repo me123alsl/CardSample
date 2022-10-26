@@ -1,20 +1,31 @@
 server:
+  port: 8080
   tomcat:
     threads:
       max: 200
-  port: 8080
+
 
 spring:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbc-url: jdbc:mariadb://localhost:3306/payment?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
-    password:
+    password: password
 
   jpa:
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-          format_sql: true
-      show-sql: true
-      generate-ddl: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: true
+    show-sql: true
+    generate-ddl: true
+
+  logging:
+    level:
+      org.hibernate.SQL: debug
+      org.hibernate.type : trace
