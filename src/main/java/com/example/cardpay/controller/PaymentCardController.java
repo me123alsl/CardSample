@@ -4,28 +4,28 @@ import com.example.cardpay.entity.CommonResponse;
 import com.example.cardpay.entity.dto.CreatePaymentRequest;
 import com.example.cardpay.entity.dto.SearchPaymentRequest;
 import com.example.cardpay.service.PaymentCardServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 public class PaymentCardController {
-
-    private PaymentCardServiceImpl paymentCardService;
+    @Autowired
+    PaymentCardServiceImpl paymentCardService;
 
     @RequestMapping(value = "/payment", method = RequestMethod.GET)
-    public HashMap<String, CommonResponse> searchPayment(SearchPaymentRequest searchPaymentRequest) {
-        HashMap<String, CommonResponse> response = new HashMap<>();
-        ResponseEntity.ok(response);
-        return response;
+    public CommonResponse searchPayment(@RequestBody SearchPaymentRequest searchPaymentRequest) {
+        return paymentCardService.findBySearchOption(searchPaymentRequest);
     }
 
     @RequestMapping(value = "/payment", method = RequestMethod.POST)
-    public HashMap<String, Object> createPayment(CreatePaymentRequest createPaymentRequest) {
+    public HashMap<String, Object> createPayment(@RequestBody CreatePaymentRequest createPaymentRequest) {
         HashMap<String, Object> response = new HashMap<>();
+        response.put("data", createPaymentRequest);
         paymentCardService.insertCardPayment(createPaymentRequest);
         return response;
     }

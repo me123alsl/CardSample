@@ -19,7 +19,6 @@ public class PaymentCard {
             generator = "PAYMENT_CARD_SEQ_GENERATOR"
     )
     private Long idx;
-
     @Column(name = "user" , nullable = false)
     private String user;
     @Column(name = "payment_date", nullable = false)
@@ -31,10 +30,18 @@ public class PaymentCard {
     @Column(name = "store_name", nullable = false)
     private String storeName;
     @Column(name = "payment_amount", nullable = false)
-    private int paymentAmount;
+    private Long paymentAmount;
+
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    public void createdAt() {
+        this.createdAt = LocalDateTime.now();
+    }
 
     @Builder
-    public PaymentCard(String user, LocalDateTime paymentDate, String cardNumber, String cardCompany, String storeName, int paymentAmount) {
+    public PaymentCard(String user, LocalDateTime paymentDate, String cardNumber, String cardCompany, String storeName, Long paymentAmount) {
         this.user = user;
         this.cardCompany = cardCompany;
         this.cardNumber = cardNumber;

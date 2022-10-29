@@ -1,0 +1,13 @@
+version: "3" # 버전 지정
+
+services: # 컨테이너 설정
+  db:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - ./mysqldata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=mydb
+    ports:
+      - "3306"
