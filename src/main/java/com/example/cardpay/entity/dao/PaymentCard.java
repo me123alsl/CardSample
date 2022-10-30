@@ -15,8 +15,7 @@ public class PaymentCard {
     @Id
     @Column(name = "idx")
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "PAYMENT_CARD_SEQ_GENERATOR"
+            strategy = GenerationType.IDENTITY
     )
     private Long idx;
     @Column(name = "user" , nullable = false)
@@ -25,10 +24,13 @@ public class PaymentCard {
     private LocalDateTime paymentDate;
     @Column(name = "card_number", nullable = false)
     private String cardNumber;
+
     @Column(name = "card_company", nullable = false)
-    private String cardCompany;
+    @Enumerated(EnumType.STRING)
+    private CardCompany cardCompany;
     @Column(name = "store_name", nullable = false)
-    private String storeName;
+    @Enumerated(EnumType.STRING)
+    private Store storeName;
     @Column(name = "payment_amount", nullable = false)
     private Long paymentAmount;
 
@@ -41,7 +43,7 @@ public class PaymentCard {
     }
 
     @Builder
-    public PaymentCard(String user, LocalDateTime paymentDate, String cardNumber, String cardCompany, String storeName, Long paymentAmount) {
+    public PaymentCard(String user, LocalDateTime paymentDate, String cardNumber, CardCompany cardCompany, Store storeName, Long paymentAmount) {
         this.user = user;
         this.cardCompany = cardCompany;
         this.cardNumber = cardNumber;

@@ -1,6 +1,8 @@
 package com.example.cardpay;
 
+import com.example.cardpay.entity.dao.CardCompany;
 import com.example.cardpay.entity.dao.PaymentCard;
+import com.example.cardpay.entity.dao.Store;
 import com.example.cardpay.entity.dto.ExcelPaymentCard;
 import com.example.cardpay.repository.PaymentCardRepository;
 import io.github.millij.poi.SpreadsheetReadException;
@@ -62,9 +64,9 @@ public class PreRunner implements ApplicationRunner {
                                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                             )
                     )
-                    .cardCompany(payment.getCardCompany())
+                    .cardCompany(CardCompany.valueOf(payment.getCardCompany()))
                     .cardNumber(payment.getCardNumber())
-                    .storeName(payment.getStoreName())
+                    .storeName(Store.valueOf(payment.getStoreName()))
                     .paymentAmount(Long.parseLong(payment.getPaymentAmount().replace(",","")))
                     .build()
             );

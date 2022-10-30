@@ -1,8 +1,6 @@
+# 미사용 -> config/TomcatCustomizer.java 참고
 server:
   port: 8080
-  tomcat:
-    threads:
-      max: 200
 
 spring:
   servlet:
@@ -22,9 +20,10 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         format_sql: true
     show-sql: true
-    generate-ddl: true
+    generate-ddl: false
 
   logging:
     level:
       org.hibernate.SQL: debug
       org.hibernate.type : trace
+

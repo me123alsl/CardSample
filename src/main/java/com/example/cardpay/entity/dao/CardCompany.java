@@ -1,28 +1,24 @@
 package com.example.cardpay.entity.dao;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public enum CardCompany {
+    우리카드("우리카드"),
+    카카오("카카오"),
+    현대카드("현대카드"),
+    토스("토스"),
+    농협카드("농협카드"),
+    신한카드("신한카드"),
+    BC카드("BC카드"),
+    하나카드("하나카드"),
+    국민카드("국민카드")
+    ;
+    private String cardCompany;
 
-@Getter
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder(builderMethodName = "CardCompanyBuilder")
-@Table(name = "card_company")
-public class CardCompany {
-    @Id
-    @Column(name = "card_company_name", insertable=false, updatable=false)
-    private String cardCompanyName;
-
-    public static CardCompanyBuilder builder(CardCompany cardCompany) {
-        return CardCompanyBuilder()
-                .cardCompanyName(cardCompany.getCardCompanyName());
+    CardCompany(String cardCompany) {
+        this.cardCompany = cardCompany;
     }
+
 }

@@ -1,5 +1,7 @@
 package com.example.cardpay.entity.dto;
 
+import com.example.cardpay.entity.dao.CardCompany;
+import com.example.cardpay.entity.dao.Store;
 import io.github.millij.poi.ss.model.annotations.Sheet;
 import io.github.millij.poi.ss.model.annotations.SheetColumn;
 import lombok.*;

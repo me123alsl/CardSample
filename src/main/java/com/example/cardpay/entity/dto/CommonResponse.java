@@ -1,4 +1,4 @@
-package com.example.cardpay.entity;
+package com.example.cardpay.entity.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

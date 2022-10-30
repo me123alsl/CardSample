@@ -1,6 +1,6 @@
 CREATE TABLE `payment_card`
 (
-    `idx`            bigint(20) NOT NULL,
+    `idx`            bigint(20) NOT NULL AUTO_INCREMENT,
     `card_company`   varchar(255) NOT NULL,
     `card_number`    varchar(255) NOT NULL,
     `created_at`     datetime     NOT NULL,

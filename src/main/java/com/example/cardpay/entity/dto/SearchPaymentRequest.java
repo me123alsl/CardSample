@@ -1,5 +1,7 @@
 package com.example.cardpay.entity.dto;
 
+import com.example.cardpay.entity.dao.CardCompany;
+import com.example.cardpay.entity.dao.Store;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
@@ -14,9 +16,9 @@ import java.util.List;
 public class SearchPaymentRequest {
     private String user;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime fromDate = LocalDateTime.of(1000, 1 ,1, 00,00,00); // 검색기간 범위 시작
+    private LocalDateTime fromDate;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime toDate = LocalDateTime.of(3000, 12 ,31, 23,59,59);   // 검색기간 범위 종료
+    private LocalDateTime toDate;
     private List<String> cardCompany;
     private List<String> storeName;
     private int pageIndex;  // 화면 하단 페이지의 인덱스
