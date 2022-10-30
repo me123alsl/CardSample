@@ -22,8 +22,8 @@ public class TomcatCustomizer implements WebServerFactoryCustomizer<TomcatServle
 
     private void applyProperties(AbstractHttp11Protocol protocolHandler) {
         protocolHandler.setPort(9090);
-        protocolHandler.setMaxConnections(1);
-        protocolHandler.setMaxKeepAliveRequests(1);
+        protocolHandler.setMaxConnections(100);
+        protocolHandler.setMaxKeepAliveRequests(100);
         protocolHandler.setKeepAliveTimeout(30000);
     }
 }
